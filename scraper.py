@@ -9,50 +9,58 @@ def create_restaurant_dict(filename: str):
     return data
 
 def find_restaurants(data_set, search_item):
-    restaurants = []
+    restaurants = {}
     
     for restaurant, menu in data_set.items():
         
+        items = {}
         for item, price in menu.values():
             if search_item in item:
-                restaurants.append({restaurant: (item, price)})
+                items[item] = price
+                
+        restaurants[restaurant] = items
                 
     return restaurants
             
 def find_cheapest(data_set, search_item):
-    restaurant_list = find_restaurants(data_set, search_item)
     
-    for restaurant in restaurant_list:
+    restaurants = find_restaurants(data_set, search_item)
+    
+    overall_cheapest_restaurant = restaurants.keys()[0]
+    overall_cheapest_price = restaurants[0][0]
+    overall_cheapest_item = restaurants.keys()[0][0]
+    
+    for restaurant in restaurants:
         
-        for item, price in data_set[restaurant].items():
-            if search_item in item and price <= cheapest_price:
+        cheapest_price = restaurant[0]
+        cheapest_item = restaurant.keys()[0]
+        
+        for item, price in restaurant.values():
+            if price <= cheapest_price:
                 cheapest_price = price
                 cheapest_item = item
-            
-        return restaurant, cheapest_item, cheapest_price
+        
+        if cheapest_price <= overall_cheapest_item:
+            overall_cheapest_restaurant = restaurant
+        
+    return overall_cheapest_restaurant, cheapest_item, cheapest_price
 
 def cheapest_list(data_set, search_item, length):
+    cheapest_list = []
     
-    top_list = []
-    while len(top_list) <= length:
-        for restaurant, menu in data_set.items():
-            if restaurant in top_list:
-                continue
-            
-            for item, price in menu.items():
-                if len(top_list) == 0 or search_item in item and price <= cheapest_price:
-                    cheapest_price = price
-                    top_list.append((restaurant, item, price))
-                    
-
-            break
+    while len(cheapest_list) <= length:
+        cheapest = find_cheapest(data_set, search_item)
+        if cheapest[0] in cheapest_list:
+            continue
+        
+        cheapest_list.append(cheapest)
     
-    return top_list
+    return cheapest_list
 
 if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
 
-    print(find_cheapest(data, "cheese"))
+    print(cheapest_list(data, "cheese", 3))
     # print(cheapest_list(data, "cheese", 3))
     
     pass
