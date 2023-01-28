@@ -1,13 +1,12 @@
 import json
-import requests
 
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
-    data = fobj.load(fobj)
+    data = json.load(fobj)
     
-    for i in data["restaurants"]:
+    for i in data:
         print(i)
-        
+       
     return data
 
 def cheapest_list(data_set, search_item, length):
