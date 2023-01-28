@@ -1,10 +1,10 @@
 {
-   "bocallido":{
+   "Bocallido":{
       "Cheese Tequenos":14.00,
       "Cheese and Plantain Tequenos":17.00,
       "Cheese and Guava Tequenos":17.00
    },
-   "ofish":{
+   "O Fish":{
       "Fried Pickles":10.00,
       "Onion Rings":11.00,
       "Crabe Cake":14.00,
@@ -14,4 +14,27 @@
       "Black and White Waffle":16.50,
       "Chocolate & Hazelnut Waffle":16.95,
       "Illegal Chocolate Waffle":16.50
+   },
+   "burgerbros":{
+      "Texas BBG Burger":16.99,
+      "Cheezy Cheetos Crunchy Chicken":16.99,
+      "BurgerPlexe Suprême":24.99,
+      "Special - Double (14oz) Cheese Burger with Beef Bacon":24.99,
+      "BurgerPlexe Suprême":24.99,
+      "Special - Fish Burger":14.99,
+      "Special - Double (14oz) Cheese Burger with Beef Bacon":24.99,
+      "001. Classic Burger":15.99,
+      "002. Cheeseburger":16.99,
+      "003. Burger - BurgerBros Spécial":17.99,
+      "004. Cheesy Melt Burger": 16.99,
+      "005. Egg Burger": 16.99,
+      "006. Spicy Burger": 16.99,
+      "007. Smoked Burger": 17.99,
+      "008. Fried Mozzarella Burger": 17.99,
+      "Classic Poutine":7.99,
+      "BurgerBros Poutine":11.99,
+      "Chicken Poutine":9.99,
+      "Spicy Poutine":7.99,
+      "Italian Poutine (vegetarian)":7.99
    }
+}
