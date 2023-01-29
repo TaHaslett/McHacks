@@ -3,7 +3,7 @@ body {
     background-image: url("homepage2.jpg");
     color: black;
     background-size: 100%;
-    margin-top: 250px;
+    margin-top: 230px;
 }
 
 h1{
@@ -18,5 +18,5 @@ p{
 
 *{
     position:relative;
-    top: 5px;
+    top: 3px;
 }
