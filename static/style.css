@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    background: #F5CCE8;
+    background-image: url("cat_frl.jpg");
+    color: black;
+}
+
+h1{
+    text-align: center;
+    text-decoration-color: #230b0b;
+    top: 50px;
+}
+
+p{
+    text-align: center;
+    padding-block: 5px;
+}
+
+*{
+    position:relative;
+    top: 20px;
+}
