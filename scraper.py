@@ -1,5 +1,7 @@
 import json
 
+STRING = "YAY!!!!!!!!!"
+
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
     data = json.load(fobj)
