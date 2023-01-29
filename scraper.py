@@ -95,7 +95,22 @@ def create_list(data_set: dict, search_item: str, length: int, bougie: bool):
         
     return best_list
 
+def create_post(data_set, search_item, length, bougie):
+    tup_list = create_list(data_set, search_item, length, bougie)
+    final_list = []
+    for tup in tup_list:
+        print(tup)
+        print(tup[0])
+        dict_e = {}
+        dict_e['Restaurant'] = tup[0]
+        dict_e['Item'] = tup[1]
+        dict_e['Price'] = str(tup[2])
+        final_list.append(dict_e)  
+    return final_list
+    
+
 if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
     
     print(create_list(data, "burger", 4, False))
+    print(create_post(data, "burger", 4, False))
