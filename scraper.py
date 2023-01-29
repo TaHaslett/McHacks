@@ -99,5 +99,3 @@ if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
     
     print(create_list(data, "falafel", 3, True))
-    
-    pass
