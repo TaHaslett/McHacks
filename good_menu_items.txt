@@ -1,0 +1,7 @@
+items:
+curry (3)
+rolls (3)
+spaghetti
+snow (0)
+fried rice
+ice cream
