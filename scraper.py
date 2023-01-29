@@ -5,7 +5,8 @@ import json
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
     data = json.load(fobj)
-       
+    fobj.close()
+    
     return data
 
 def find_restaurants(data_set, search_item):
@@ -20,6 +21,9 @@ def find_restaurants(data_set, search_item):
         
         if len(items) != 0:
             restaurants[restaurant] = items
+            
+    if len(restaurant) == 0:
+        raise ValueError
                 
     return restaurants
             
@@ -52,28 +56,21 @@ def remove_menu_item(data_set, restaurant, menu_item):
     del data_set[restaurant][menu_item]
 
 def cheapest_list(data_set, search_item, length):
-    cheapest_dict = {}
+    cheapest_list = []
     
-    
-    
-    while len(cheapest_list) <= length:
-        cheapest = find_cheapest(data_set, search_item)
+    for i in range(length):
+        try:
+            cheapest = find_cheapest(data_set, search_item)
+            cheapest_list.append(cheapest)
+            remove_menu_item(data_set, cheapest[0], cheapest[1])
+        except ValueError:
+            break
         
-        if cheapest[0] in cheapest_dict:
-            if cheapest[1]
-            continue
-        
-        cheapest_list.append(cheapest)
-    
     return cheapest_list
 
 if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
-
-    # print(find_restaurants(data, "burger"))
-
-    print(find_cheapest(data, "cheese"))
     
-    # print(cheapest_list(data, "cheese", 3))
+    print(cheapest_list(data, "fatcarons", 3))
     
     pass
