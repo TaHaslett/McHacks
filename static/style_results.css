@@ -1,6 +1,6 @@
 body{
     text-align: center;
-    background-image: url("about.jpg");
+    background-image: url("results.jpg");
     background-size: 40%;
     color: black;
 }
@@ -8,10 +8,4 @@ body{
 h1{
     text-align: center;
     text-decoration-color: #230b0b;
-}
-
-p{
-    text-align: center;
-    text-decoration-color: #230b0b;
-    top: 5px;
 }

@@ -1,14 +1,14 @@
 body {
-    text-align: center;
     background: #F5CCE8;
-    background-image: url("cat_frl.jpg");
+    background-image: url("homepage2.jpg");
     color: black;
+    background-size: 100%;
+    margin-top: 250px;
 }
 
 h1{
     text-align: center;
     text-decoration-color: #230b0b;
-    top: 50px;
 }
 
 p{
@@ -18,5 +18,5 @@ p{
 
 *{
     position:relative;
-    top: 20px;
+    top: 5px;
 }
