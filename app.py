@@ -4,9 +4,9 @@ from wtforms import StringField
 from wtforms.validators import DataRequired, Length
 import scraper as s
 
-app = Flask(__name__)
+DATABASE_FILE_NAME = "fake_restaurants.json"
 
-data = s.create_restaurant_dict("restaurants.json")
+app = Flask(__name__)
 
 class FindFoodForm(FlaskForm):
     food_item = StringField("search", validators=[DataRequired(), Length(max=20)])
@@ -32,7 +32,7 @@ def results():
         
         boogeeness = "bougie_mode" in form_data
              
-        data = s.create_restaurant_dict("restaurants.json")
+        data = s.create_restaurant_dict(DATABASE_FILE_NAME)
         post = s.create_post(data, form_data["item"], 3, boogeeness)
         return render_template("results.html", post=post)
 
