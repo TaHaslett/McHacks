@@ -1,7 +1,5 @@
 import json
 
-STRING = "YAY!!!!!!!!!"
-
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
     data = json.load(fobj)
@@ -100,4 +98,4 @@ def create_list(data_set: dict, search_item: str, length: int, bougie: bool):
 if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
     
-    print(create_list(data, "falafel", 3, True))
+    print(create_list(data, "burger", 4, False))
