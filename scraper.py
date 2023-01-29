@@ -107,10 +107,3 @@ def create_post(data_set, search_item, length, bougie):
         dict_e['Price'] = str(tup[2])
         final_list.append(dict_e)  
     return final_list
-    
-
-if __name__ == "__main__":
-    data = create_restaurant_dict("restaurants.json")
-    
-    print(create_list(data, "burger", 4, False))
-    print(create_post(data, "burger", 4, False))
