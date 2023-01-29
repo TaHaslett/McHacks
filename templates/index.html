@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <title>Food Finder</title>
 </head>
 <body>
-    Hello, {{name}}.
-    <div></div>
-    <form action="/app.py" method="POST">
-        <label>Food Search</label>
-        <input oninput="output">
-    </form>
-    <button>submit</button>
+    <div>
+        <form action="/results" method="POST">
+            <p><input type = "text" name = "item" /></p>
+            <p><input type = "submit" value = "submit" /></p>
+            <p><button type="reset">reset</button>
+        </form>
+    </div>
 </body>
 </html>
