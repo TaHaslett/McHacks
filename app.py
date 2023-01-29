@@ -28,7 +28,6 @@ def results():
              
         data = s.create_restaurant_dict(DATABASE_FILE_NAME)
         post = s.create_post(data, form_data["item"], 3, boogeeness)
-        length = len(post)
         
         return render_template("results.html", post=post, search=form_data["item"], length=len(post))
 
