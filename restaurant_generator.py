@@ -3,22 +3,56 @@ import json
 import random
 co = cohere.Client("rrwaMP5CuHu4lOQclEGvvY8dxcfGvOqcCesscCgy")
 
-
-cuisine_possibilities = ["Italian", "Japanese", "Indian", "Mediterranean", "Thai", "Mexican", "Greek",
+    
+CUISINE_POSSIBILITIES = ["Italian", "Japanese", "Indian", "Mediterranean", "Thai", "Mexican", "Greek",
                          "Irish","Gastropub","Spanish", "European","Caribbean","Vietnamese","Steak House", 
                          "Bistro", "Chinese","Latin","French","Austrian","German","Indonesian","Dutch","Czech"]
 
 
-def create_restaurant_dict(filename):
+def create_database(filename):
     fobj = open(filename, "w")
-    
+    rest_dict = {}
     for i in range(100):
         
-        # pick a random cuisine
-        number = random.randint(len(cuisine_possibilities))
+        restaurant_name, menu = create_a_restaurant_dict()
+        rest_dict[restaurant_name] = menu
         
-        # split via menu, strip spaces and colon
-        restaurant_idea = generate_restaurant(cuisine_possibilities[number])
+    fobj.write(json.dumps(rest_dict))
+    fobj.close()
+        
+
+def create_a_restaurant_dict():
+
+    
+    # pick a random cuisine
+    number = random.randint(0,len(CUISINE_POSSIBILITIES)-1)
+        
+    # split via menu, strip spaces and colon
+    restaurant_idea = generate_restaurant(CUISINE_POSSIBILITIES[number]).strip(" /n--")
+        
+    list_of_stuff = restaurant_idea.split("Menu: ")
+        
+    for j in range(len(list_of_stuff)):
+        list_of_stuff[j] = list_of_stuff[j].strip()
+        
+    restaurant_name = list_of_stuff[0]
+        
+    menu = list_of_stuff[1].split(",")
+        
+    menu_dict = {}
+        
+    for item_price in menu:
+        try:
+            menu_list = item_price.strip().split(":")
+                
+            menu_dict[menu_list[0]] = float(menu_list[1].strip())
+        except:
+            continue
+        
+    return restaurant_name,menu_dict
+            
+            
+        
         
     
     
@@ -34,7 +68,7 @@ def generate_restaurant(cuisine):
     --
     Cuisine : Sushi
     Restaurant Name: Paradise Rolls
-    Menu: Salmon Rolls: 9.00,Shrimp tempura:6.99,California Rolls:8.38
+    Menu: Salmon Rolls:9.00,Shrimp tempura:6.99,California Rolls:8.38
     --
     Cuisine: American
     Restaurant Name: Bob's Burgers
@@ -59,4 +93,12 @@ def generate_restaurant(cuisine):
     return restaurant_idea
 
 
-print(generate_restaurant(cuisine_possibilities[5]))
+if __name__ == "__main__":
+    # create_database("fake_restaurants.json")
+    
+    fobj = open("fake_restaurants.json", "r")
+    
+    print(json.load(fobj))
+    
+    fobj.close()
+    
