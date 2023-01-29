@@ -34,7 +34,9 @@ def results():
              
         data = s.create_restaurant_dict(DATABASE_FILE_NAME)
         post = s.create_post(data, form_data["item"], 3, boogeeness)
-        return render_template("results.html", post=post)
+        length = len(post)
+        
+        return render_template("results.html", post=post, search=form_data["item"], length=len(post))
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=80)
