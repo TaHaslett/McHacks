@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import scraper as s
 
-DATABASE_FILE_NAME = "fake_restaurants.json"
+DATABASE_FILE_NAME = "newer_fake_restaurants.json"
 
 app = Flask(__name__)
     
