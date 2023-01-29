@@ -7,10 +7,15 @@
     <title>results</title>
 </head>
 <body>
-    {% for i in post %}
-    <h1>{{i.Restaurant}}</h1>
-    <p>{{i.Item}}</p>
-    <p>${{i.Price}}</p>
-    {% endfor %}
+    <h2>Showing Results for: {{search}}</h2>
+    {% if length == 0 %}
+        <p>No results found for that food item :(.</p>
+    {% else %}
+        {% for i in post %}
+            <h1>{{i.Restaurant}}</h1>
+            <p>{{i.Item}}</p>
+            <p>${{i.Price}}</p>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
