@@ -1,6 +1,6 @@
 import json
 
-import requests
+# hello
 
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
@@ -31,29 +31,36 @@ def find_cheapest(data_set, search_item):
     overall_cheapest_item = list(list(restaurants.values())[0].keys())[0]
     overall_cheapest_price = list(list(restaurants.values())[0].values())[0]
     
-    for menu in restaurants.values():
+    for restaurant, menu in restaurants.items():
         
         cheapest_item = list(menu.keys())[0]
         cheapest_price = list(menu.values())[0]
         
         for item, price in menu.items():
-            if price <= cheapest_price:
+            if price < cheapest_price:
                 cheapest_price = price
                 cheapest_item = item 
         
-        if cheapest_price <= overall_cheapest_price:
-            overall_cheapest_restaurant = menu
+        if cheapest_price < overall_cheapest_price:
+            overall_cheapest_restaurant = restaurant
             overall_cheapest_item = cheapest_item
             overall_cheapest_price = cheapest_price
         
     return overall_cheapest_restaurant, overall_cheapest_item, overall_cheapest_price
 
+def remove_menu_item(data_set, restaurant, menu_item):
+    del data_set[restaurant][menu_item]
+
 def cheapest_list(data_set, search_item, length):
-    cheapest_list = []
+    cheapest_dict = {}
+    
+    
     
     while len(cheapest_list) <= length:
         cheapest = find_cheapest(data_set, search_item)
-        if cheapest[0] in cheapest_list:
+        
+        if cheapest[0] in cheapest_dict:
+            if cheapest[1]
             continue
         
         cheapest_list.append(cheapest)
