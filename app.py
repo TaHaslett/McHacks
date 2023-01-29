@@ -29,15 +29,11 @@ def results():
     
     if request.method == "POST":
         form_data = request.form
-        if form_data["bougie_mode"] == 'true':
-            boogeeness = True
-        if form_data["bougie_mode"] == 'false':
-            boogeeness = False
-        else:
-            Print("poopoo") 
-        print(boogeeness)
+        
+        boogeeness = "bougie_mode" in form_data
+             
         data = s.create_restaurant_dict("restaurants.json")
-        post = s.create_post(data, form_data["item"], 3, bougeeness)
+        post = s.create_post(data, form_data["item"], 3, boogeeness)
         return render_template("results.html", post=post)
 
 if __name__ == "__main__":
