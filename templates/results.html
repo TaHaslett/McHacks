@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>results</title>
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
     <h2>Showing Results for: {{search}}</h2>
+    <p><a href="/"><button>return</button></a></p>
     {% if length == 0 %}
         <p>No results found for that food item :(.</p>
     {% else %}

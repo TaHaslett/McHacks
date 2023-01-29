@@ -1,15 +1,9 @@
 from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, Length
 import scraper as s
 
 DATABASE_FILE_NAME = "fake_restaurants.json"
 
 app = Flask(__name__)
-
-class FindFoodForm(FlaskForm):
-    food_item = StringField("search", validators=[DataRequired(), Length(max=20)])
     
     
 @app.route("/")
