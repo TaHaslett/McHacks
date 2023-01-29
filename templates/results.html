@@ -7,6 +7,10 @@
     <title>results</title>
 </head>
 <body>
-    <h2>{{form_data}}</h2>
+    {% for i in post %}
+    <h1>{{i.Restaurant}}</h1>
+    <p>{{i.Item}}</p>
+    <p>${{i.Price}}</p>
+    {% endfor %}
 </body>
 </html>

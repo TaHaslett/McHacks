@@ -29,11 +29,11 @@ def results():
     
     if request.method == "POST":
         form_data = request.form
-        food = form_data["item"]
         
+        data = s.create_restaurant_dict("restaurants.json")
+        post = s.create_post(data, form_data["item"], 3, True)
         
-        
-        return render_template("results.html", form_data=form_data)
+        return render_template("results.html", post=post)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=80)
