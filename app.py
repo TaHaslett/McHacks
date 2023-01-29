@@ -7,14 +7,9 @@ from scraper import *
 
 app = Flask(__name__)
 
-class BasicForm(FlaskForm):
-    ids = StringField("ID",validators=[DataRequired()])
-    submit = SubmitField("Submit")
-
-@app.route("/", methods =['POST','GET'])
+@app.route("/")
 def main():
-    form = BasicForm()
-    return render_template("index.html",form = form)
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=80)

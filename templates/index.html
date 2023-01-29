@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Food Finder</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Find</title>
 </head>
 <body>
-    <form action="/search" method="POST">
-        {{form.csrf_token}}
-        {{form.ids}}
-        {{form.submit}}
+    <form action="/app.py" method="POST">
+        <label>Food Search</label>
+        <input name="name">
     </form>
+    <button>submit</button>
 </body>
+</html>
