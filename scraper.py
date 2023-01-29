@@ -1,7 +1,5 @@
 import json
 
-# hello
-
 def create_restaurant_dict(filename: str):
     fobj = open(filename, "r")
     data = json.load(fobj)
@@ -16,13 +14,13 @@ def find_restaurants(data_set, search_item):
         
         items = {}
         for item, price in menu.items():
-            if search_item in item.lower():
+            if search_item.lower() in item.lower():
                 items[item] = price
         
         if len(items) != 0:
             restaurants[restaurant] = items
             
-    if len(restaurant) == 0:
+    if len(restaurants) == 0:
         raise ValueError
                 
     return restaurants
@@ -52,25 +50,54 @@ def find_cheapest(data_set, search_item):
         
     return overall_cheapest_restaurant, overall_cheapest_item, overall_cheapest_price
 
+def find_expensive(data_set, search_item):
+    
+    restaurants = find_restaurants(data_set, search_item)
+    
+    overall_expensive_restaurant = list(restaurants.keys())[0]
+    overall_expensive_item = list(list(restaurants.values())[0].keys())[0]
+    overall_expensive_price = list(list(restaurants.values())[0].values())[0]
+    
+    for restaurant, menu in restaurants.items():
+        
+        expensive_item = list(menu.keys())[0]
+        expensive_price = list(menu.values())[0]
+        
+        for item, price in menu.items():
+            if price > expensive_price:
+                expensive_price = price
+                expensive_item = item 
+        
+        if expensive_price > overall_expensive_price:
+            overall_expensive_restaurant = restaurant
+            overall_expensive_item = expensive_item
+            overall_expensive_price = expensive_price
+        
+    return overall_expensive_restaurant, overall_expensive_item, overall_expensive_price
+
 def remove_menu_item(data_set, restaurant, menu_item):
     del data_set[restaurant][menu_item]
 
-def cheapest_list(data_set, search_item, length):
-    cheapest_list = []
+def create_list(data_set: dict, search_item: str, length: int, bougie: bool):
+    best_list = []
     
     for i in range(length):
         try:
-            cheapest = find_cheapest(data_set, search_item)
-            cheapest_list.append(cheapest)
-            remove_menu_item(data_set, cheapest[0], cheapest[1])
+            if bougie:
+                best = find_expensive(data_set, search_item)
+            else:
+                best = find_cheapest(data_set, search_item)
+            
+            best_list.append(best)
+            remove_menu_item(data_set, best[0], best[1])
         except ValueError:
             break
         
-    return cheapest_list
+    return best_list
 
 if __name__ == "__main__":
     data = create_restaurant_dict("restaurants.json")
     
-    print(cheapest_list(data, "fatcarons", 3))
+    print(create_list(data, "falafel", 3, True))
     
     pass
